@@ -1,0 +1,50 @@
+﻿@page "/company"
+
+<h3>List Employees</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Company Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var company in Companies)
+        {
+
+
+            <tr>
+                <td>
+                    @company.companyName
+
+                </td>
+                <td>
+                    @company.companyEmail
+                </td>
+                <td>
+                    @company.companyPhone
+                </td>
+                <td>
+                    Edit
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<p>
+    <a class="btn btn-primary" href="/company/create">Create Company </a>
+</p>
+
+@code {
+    private List<Company> Companies = new List<Company>();
+    protected override async Task OnInitializedAsync()
+    {
+
+    }
+
+}

@@ -1,0 +1,37 @@
+﻿@page "/employee/create"
+
+@attribute [Authorize]
+@inject NavigationManager Navigation
+<EditForm Model="employee" OnInvalidSubmit="@HandlevalidSubmit">
+
+    <DataAnnotationsValidator />        <!--this is to make sure the required fields are not NULL. Blazor will generate the error for us-->
+    <div class="form-group">
+        <label class="control-label">First Name</label>
+        <InputText @bind-Value="employee.employeeFirstName"></InputText>
+        <ValidationMessage For="@(() => employee.employeeFirstName)" />         <!--if the input is wrong, we will be presented with an error message, showing we need to enter the correct information.-->
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Last Name</label>
+        <InputText @bind-Value="employee.employeeLastName"></InputText>
+        <ValidationMessage For="@(() => employee.employeeLastName)" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Username</label>
+        <InputText @bind-Value="employee.employeeUsername"></InputText>
+        <ValidationMessage For="@(() => employee.employeeUsername)" />
+    </div>
+
+    <button type="submit">Submit</button>
+
+</EditForm>
+
+@code {
+    private Employee employee { get; set; } = new Employee();
+    private void HandlevalidSubmit()
+    {
+      
+    }
+
+}
